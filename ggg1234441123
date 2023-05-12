@@ -1,0 +1,38 @@
+import random
+
+class Bomb 清理： 
+    def __init__(self):  
+        self.board = [["#", "#", "#", "#", "#", "#"],  
+                    ["#", "#", "#", "#", "#", "#"],  
+                    ["#", "#", "#", "#", "#", "#"],  
+                    ["#", "#", "#", "#", "#", "#"],  
+                    ["#", "#", "#", "#", "#", "#"],  
+                    ["#", "#", "#", "#", "#", "#"]]
+
+    def play(self):  
+        board = self.board  
+        score = 0  
+        game_over = False
+
+        while not game_over:  
+            row = random.randint(0, 8)  
+            col = random.randint(0, 8)
+
+            if board[row][col] == "X":  
+                game_over = True  
+            else:  
+                board[row][col] = "."
+
+                for i in range(8):  
+                    if board[row+i][col] == "X":  
+                        board[row+i][col] = "."  
+                        score += 1
+
+                time.sleep(0.5)
+
+            print(f"{row} {col}: {board[row][col]}")
+
+        print(f"得分:{score}")
+
+if __name__ == "__main__":  
+    Bomb 清理 ().play()  
